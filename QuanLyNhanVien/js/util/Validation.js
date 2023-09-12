@@ -66,8 +66,8 @@ function kiemTraMatKhau(value, idErr, message) {
 }
 
 function kiemTraDoDai(value, min, max, idErr, message) {
-//   var length = value.length;
-  if (value >= Number(min) && value <= Number(max)) {
+  var length = value.length;
+  if (length >= min && length <= max) {
     document.querySelector(idErr).innerHTML = "";
     document.querySelector(idErr).style.display = "none";
     return true;
@@ -77,6 +77,19 @@ function kiemTraDoDai(value, min, max, idErr, message) {
     return false;
   }
 }
+
+function kiemTraMinMax(value, min, max, idErr, message) {
+    // var length = value.length;
+    if (value >= Number(min) && length <= Number(max)) {
+      document.querySelector(idErr).innerHTML = "";
+      document.querySelector(idErr).style.display = "none";
+      return true;
+    } else {
+      document.querySelector(idErr).innerHTML = message;
+      document.querySelector(idErr).style.display = "block";
+      return false;
+    }
+  }
 
 function kiemTraTrung(id, dsnv, idErr, message) {
   // findIndex: tìm vị trí index, khi mà thỏa điều kiện tìm thấy thì trả về vị trí index, còn khi ko thỏa điều kiện/ko tìm thấy thì trả về về -1
@@ -117,7 +130,7 @@ function kiemTraLuaChon(value, idErr, mess) {
     document.querySelector(idErr).innerHTML = mess;
     document.querySelector(idErr).style.display = "block";
     return false;
-  }else{
+  } else {
     document.querySelector(idErr).innerHTML = "";
     return true;
   }

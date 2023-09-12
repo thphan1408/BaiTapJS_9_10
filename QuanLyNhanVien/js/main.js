@@ -36,20 +36,20 @@ function themNhanVien() {
     kiemTraDoDai(nv.taiKhoan, 4, 6, "#tbTKNV", "Độ dài từ 4 - 6 ký tự");
 
   // Kiểm tra ngày làm
-  valid = kiemTraRong(nv.ngayLam, "#tbNgay", "Ngày làm không được để trống");
+  valid &= kiemTraRong(nv.ngayLam, "#tbNgay", "Ngày làm không được để trống");
 
   // Kiểm tra tên
-  valid =
+  valid &=
     kiemTraRong(nv.hoTen, "#tbTen", "Tên nhân viên không được để trống") &&
     kiemTraChuoi(nv.hoTen, "#tbTen", "Tên nhân viên phải là chữ");
 
   // Kiểm tra email
-  valid =
+  valid &=
     kiemTraRong(nv.email, "#tbEmail", "Email không được để trống") &&
     kiemTraEmail(nv.email, "#tbEmail", "Email không hợp lệ");
 
   // Kiểm tra mật khẩu
-  valid =
+  valid &=
     kiemTraRong(nv.matKhau, "#tbMatKhau", "Mật khẩu không được để trống") &&
     kiemTraMatKhau(
       nv.matKhau,
@@ -58,7 +58,7 @@ function themNhanVien() {
     );
 
   // Kiểm tra chức vụ
-  valid =
+  valid &=
     kiemTraRong(nv.chucVu, "#tbChucVu", "Chức vụ không được để trống") &&
     kiemTraLuaChon(
       nv.chucVu,
@@ -67,14 +67,14 @@ function themNhanVien() {
     );
 
   // Kiểm tra lương cơ bản
-  valid =
+  valid &=
     checkEmptyNum(
       nv.luongCoBan,
       "#tbLuongCB",
       "Lương cơ bản không được để trống"
     ) &&
     kiemTraSo(nv.luongCoBan, "#tbLuongCB", "Lương cơ bản phải là số") &&
-    kiemTraDoDai(
+    kiemTraMinMax(
       nv.luongCoBan,
       1000000,
       20000000,
@@ -83,10 +83,10 @@ function themNhanVien() {
     );
 
   // Kiểm giờ làm
-  valid =
+  valid &=
     checkEmptyNum(nv.gioLam, "#tbGiolam", "Giờ làm không được để trống") &&
     kiemTraSo(nv.gioLam, "#tbGiolam", "Giờ làm phải là số") &&
-    kiemTraDoDai(nv.gioLam, 80, 200, "#tbGiolam", "Giờ làm từ 80 - 200");
+    kiemTraMinMax(nv.gioLam, 80, 200, "#tbGiolam", "Giờ làm từ 80 - 200");
 
   if (valid) {
     dsnv._themNhanVien(nv);
